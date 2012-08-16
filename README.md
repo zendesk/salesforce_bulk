@@ -1,18 +1,18 @@
-# salesforce_bulk
+# SalesforceBulk
 
 ## Overview
 
-Salesforce Bulk is a simple Ruby gem for connecting to and using the [Salesforce Bulk API](http://www.salesforce.com/us/developer/docs/api_asynch/index.htm).
+Salesforce Bulk is a simple Ruby gem for connecting to and using the [Salesforce Bulk API](http://www.salesforce.com/us/developer/docs/api_asynch/index.htm). This is a rewrite with tests and no longer a fork of Jorge Valdivia's salesforce_bulk gem.
 
 ## Installation
 
 Install SalesforceBulk from RubyGems:
 
-    gem install salesforce_bulk
+    gem install salesforcebulk
 
 Or include it in your project's `Gemfile` with Bundler:
 
-    gem 'salesforce_bulk'
+    gem 'salesforcebulk'
 
 ## Contribute
 
@@ -137,7 +137,5 @@ Query results are handled differently as the response will not contain the full 
     end
 
 ## Copyright
-
-Copyright (c) 2011 Jorge Valdivia.
 
 Copyright (c) 2012 Javier Julio.
