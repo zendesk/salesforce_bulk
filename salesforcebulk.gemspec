@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Javier Julio"]
   s.email       = ["jjfutbol@gmail.com"]
   s.homepage    = "https://github.com/javierjulio/salesforce_bulk"
-  s.summary     = %q{Ruby support for the Salesforce Bulk API}
-  s.description = %q{This gem is a simple interface to the Salesforce Bulk API providing support for insert, update, upsert, delete, and query.}
+  s.summary     = %q{Full capability support for the Salesforce Bulk API.}
+  s.description = %q{This gem is a simple interface to the Salesforce Bulk API providing full support for insert, update, upsert, delete, and query actions while allowing you to specify multiple batches per job to process data fast. Gem includes unit tests.}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
