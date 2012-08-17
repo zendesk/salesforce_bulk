@@ -39,7 +39,7 @@ module SalesforceBulk
       self.host = options[:host]
       self.version = options[:version]
       
-      @api_path_prefix = "/services/async/#{self.version}/"
+      @api_path_prefix = "/services/async/#{version}/"
       @valid_operations = [:delete, :insert, :update, :upsert, :query]
       @valid_concurrency_modes = ['Parallel', 'Serial']
     end
@@ -51,13 +51,13 @@ module SalesforceBulk
       xml += ' xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">'
       xml += "<env:Body>"
       xml += '<n1:login xmlns:n1="urn:partner.soap.sforce.com">'
-      xml += "<n1:username>#{self.username}</n1:username>"
-      xml += "<n1:password>#{self.password}</n1:password>"
+      xml += "<n1:username>#{username}</n1:username>"
+      xml += "<n1:password>#{password}</n1:password>"
       xml += "</n1:login>"
       xml += "</env:Body>"
       xml += "</env:Envelope>"
       
-      response = http_post("/services/Soap/u/#{self.version}", xml, 'Content-Type' => 'text/xml', 'SOAPAction' => 'login')
+      response = http_post("/services/Soap/u/#{version}", xml, 'Content-Type' => 'text/xml', 'SOAPAction' => 'login')
       
       data = XmlSimple.xml_in(response.body, 'ForceArray' => false)
       result = data['Body']['loginResponse']['result']
