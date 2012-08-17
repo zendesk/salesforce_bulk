@@ -136,6 +136,8 @@ Query results are handled differently as the response will not contain the full 
       
     end
 
+Note: By reviewing the API docs and response format my understanding was that the API would return multiple results sets for a single batch if the query was to large but this does not seem to be the case in my live testing. It seems to be capped at 10000 records (as it when inserting data) but I haven't been able to verify through the documentation. If you know anything about that your input is appreciated. In the meantime the gem was built to support multiple result sets for a query batch but seems that will change which will simplify that method.
+
 ## Copyright
 
 Copyright (c) 2012 Javier Julio.
