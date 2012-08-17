@@ -2,7 +2,7 @@
 
 ## Overview
 
-Salesforce Bulk is a simple Ruby gem for connecting to and using the [Salesforce Bulk API](http://www.salesforce.com/us/developer/docs/api_asynch/index.htm). This is a rewrite with tests and no longer a fork of Jorge Valdivia's salesforce_bulk gem.
+Salesforce Bulk is a simple Ruby gem for connecting to and using the [Salesforce Bulk API](http://www.salesforce.com/us/developer/docs/api_asynch/index.htm). This is a rewrite of Jorge Valdivia's salesforce_bulk gem with unit tests and full API capability.
 
 ## Installation
 
@@ -50,9 +50,9 @@ Then in a Ruby script:
 
 ## Usage Examples
 
-Some requirements if you are moving from an older version of the gem. You must specify every key even if it has no value for each hash in the data array for a batch.
+An important note about the data in any of the examples: each hash in a data set must have the same set of keys. If you need to have logic to not include certain values simply specify a nil value for a key.
 
-### Basic Example
+### Basic Overall Example
 
     data1 = [{:Name__c => 'Test 1'}, {:Name__c => 'Test 2'}]
     data2 = [{:Name__c => 'Test 3'}, {:Name__c => 'Test 4'}]
@@ -82,7 +82,7 @@ For any operation you should be able to specify a concurrency mode. The default 
 
     job = client.add_job(:upsert, :MyObject__c, :concurrency_mode => :Serial, :external_id_field_name => :MyId__c)
 
-### Retrieving Info for a Job
+### Retrieving Job Information (e.g. Status)
 
     job = client.job_info(jobId) # returns a Job object
     
