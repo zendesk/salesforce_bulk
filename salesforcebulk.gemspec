@@ -3,14 +3,15 @@ $:.push File.expand_path("../lib", __FILE__)
 require "salesforce_bulk/version"
 
 Gem::Specification.new do |s|
-  s.name        = "salesforcebulk"
-  s.version     = SalesforceBulk::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Javier Julio"]
-  s.email       = ["jjfutbol@gmail.com"]
-  s.homepage    = "https://github.com/javierjulio/salesforce_bulk"
+  s.name        = 'salesforcebulk'
+  s.version     = SalesforceBulk::VERSION
   s.summary     = %q{Full capability support for the Salesforce Bulk API.}
   s.description = %q{This gem is a simple interface to the Salesforce Bulk API providing full support for insert, update, upsert, delete, and query actions while allowing you to specify multiple batches per job to process data fast. Gem includes unit tests.}
+
+  s.author   = 'Javier Julio'
+  s.email    = 'jjfutbol@gmail.com'
+  s.homepage = 'https://github.com/javierjulio/salesforce_bulk'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
