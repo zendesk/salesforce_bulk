@@ -59,7 +59,7 @@ module SalesforceBulk
       
       response = http_post("/services/Soap/u/#{self.version}", xml, 'Content-Type' => 'text/xml', 'SOAPAction' => 'login')
       
-      data = XmlSimple.xml_in(response.body, :ForceArray => false)
+      data = XmlSimple.xml_in(response.body, 'ForceArray' => false)
       result = data['Body']['loginResponse']['result']
       
       @session_id = result['sessionId']
@@ -74,7 +74,7 @@ module SalesforceBulk
       xml += "</jobInfo>"
       
       response = http_post("job/#{jobId}", xml)
-      data = XmlSimple.xml_in(response.body, :ForceArray => false)
+      data = XmlSimple.xml_in(response.body, 'ForceArray' => false)
       Job.new_from_xml(data)
     end
     
@@ -122,7 +122,7 @@ module SalesforceBulk
       xml += "</jobInfo>"
       
       response = http_post("job", xml)
-      data = XmlSimple.xml_in(response.body, :ForceArray => false)
+      data = XmlSimple.xml_in(response.body, 'ForceArray' => false)
       job = Job.new_from_xml(data)
     end
     
@@ -192,13 +192,13 @@ module SalesforceBulk
       xml += "</jobInfo>"
       
       response = http_post("job/#{jobId}", xml)
-      data = XmlSimple.xml_in(response.body, :ForceArray => false)
+      data = XmlSimple.xml_in(response.body, 'ForceArray' => false)
       Job.new_from_xml(data)
     end
     
     def job_info(jobId)
       response = http_get("job/#{jobId}")
-      data = XmlSimple.xml_in(response.body, :ForceArray => false)
+      data = XmlSimple.xml_in(response.body, 'ForceArray' => false)
       Job.new_from_xml(data)
     end
     
