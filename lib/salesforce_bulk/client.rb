@@ -5,7 +5,7 @@ module SalesforceBulk
     attr_accessor :debugging
     
     # The host to use for authentication. Defaults to login.salesforce.com.
-    attr_accessor :host
+    attr_accessor :login_host
     
     # The instance host to use for API calls. Determined from login response.
     attr_accessor :instance_host
@@ -28,15 +28,15 @@ module SalesforceBulk
         options.symbolize_keys!
       end
       
-      options = {:debugging => false, :host => 'login.salesforce.com', :version => 24.0}.merge(options)
+      options = {:debugging => false, :login_host => 'login.salesforce.com', :version => 24.0}.merge(options)
       
-      options.assert_valid_keys(:username, :password, :token, :debugging, :host, :version)
+      options.assert_valid_keys(:username, :password, :token, :debugging, :login_host, :version)
       
       self.username = options[:username]
       self.password = "#{options[:password]}#{options[:token]}"
       self.token = options[:token]
       self.debugging = options[:debugging]
-      self.host = options[:host]
+      self.login_host = options[:host]
       self.version = options[:version]
       
       @api_path_prefix = "/services/async/#{version}/"
@@ -203,14 +203,14 @@ module SalesforceBulk
     end
     
     def http_post(path, body, headers={})
-      host = self.host
-      
       headers = {'Content-Type' => 'application/xml'}.merge(headers)
       
       if @session_id
         headers['X-SFDC-Session'] = @session_id
-        host = self.instance_host
+        host = instance_host
         path = "#{@api_path_prefix}#{path}"
+      else
+        host = self.login_host
       end
       
       response = https_request(host).post(path, body, headers)
