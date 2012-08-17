@@ -1,9 +1,6 @@
 module SalesforceBulk
   # Interface for operating the Salesforce Bulk REST API
   class Client
-    # If true, print API debugging information to stdout. Defaults to false.
-    attr_accessor :debugging
-    
     # The host to use for authentication. Defaults to login.salesforce.com.
     attr_accessor :login_host
     
@@ -25,14 +22,13 @@ module SalesforceBulk
         options.symbolize_keys!
       end
       
-      options = {:debugging => false, :login_host => 'login.salesforce.com', :version => 24.0}.merge(options)
+      options = {:login_host => 'login.salesforce.com', :version => 24.0}.merge(options)
       
-      options.assert_valid_keys(:username, :password, :debugging, :login_host, :version)
+      options.assert_valid_keys(:username, :password, :login_host, :version)
       
       self.username = options[:username]
       self.password = "#{options[:password]}"
-      self.debugging = options[:debugging]
-      self.login_host = options[:host]
+      self.login_host = options[:login_host]
       self.version = options[:version]
       
       @api_path_prefix = "/services/async/#{version}/"
@@ -51,7 +47,7 @@ module SalesforceBulk
       xml += "<n1:password>#{password}</n1:password>"
       xml += "</n1:login>"
       xml += "</env:Body>"
-      xml += "</env:Envelope>"
+      xml += "</env:Envelope>\n"
       
       response = http_post("/services/Soap/u/#{version}", xml, 'Content-Type' => 'text/xml', 'SOAPAction' => 'login')
       
