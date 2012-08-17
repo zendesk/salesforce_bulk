@@ -54,12 +54,13 @@ class TestInitialization < Test::Unit::TestCase
       .with(:body => request, :headers => headers)
       .to_return(:body => response, :status => 200)
     
-    @client.authenticate()
+    result = @client.authenticate()
     
     assert_requested :post, "https://#{@client.login_host}/services/Soap/u/24.0", :body => request, :headers => headers, :times => 1
     
     assert_equal @client.instance_host, 'na9-api.salesforce.com'
     assert_equal @client.instance_variable_get('@session_id'), '00DE0000000YSKp!AQ4AQNQhDKLMORZx2NwZppuKfure.ChCmdI3S35PPxpNA5MHb3ZVxhYd5STM3euVJTI5.39s.jOBT.3mKdZ3BWFDdIrddS8O'
+    assert_equal @client, result
   end
   
   test "parsing instance id from server url" do
