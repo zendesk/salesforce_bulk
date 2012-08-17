@@ -13,9 +13,6 @@ module SalesforceBulk
     # The Salesforce password
     attr_accessor :password
     
-    # The Salesforce security token
-    attr_accessor :token
-    
     # The Salesforce username
     attr_accessor :username
     
@@ -30,11 +27,10 @@ module SalesforceBulk
       
       options = {:debugging => false, :login_host => 'login.salesforce.com', :version => 24.0}.merge(options)
       
-      options.assert_valid_keys(:username, :password, :token, :debugging, :login_host, :version)
+      options.assert_valid_keys(:username, :password, :debugging, :login_host, :version)
       
       self.username = options[:username]
-      self.password = "#{options[:password]}#{options[:token]}"
-      self.token = options[:token]
+      self.password = "#{options[:password]}"
       self.debugging = options[:debugging]
       self.login_host = options[:host]
       self.version = options[:version]
