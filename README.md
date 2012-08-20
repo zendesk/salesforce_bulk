@@ -113,7 +113,7 @@ The Batch object has various properties such as status, created time, number of 
 
 To verify that a batch completed successfully or failed call the `batch_info` or `batch_info_list` methods first, otherwise if you call `batch_result` without verifying and the batch failed the method will raise an error.
 
-The object returned from the following example only applies to the operations: delete, insert, update and upsert. Query results are handled differently.
+The object returned from the following example only applies to the operations: `delete`, `insert`, `update` and `upsert`. Query results are handled differently.
 
     results = client.batch_result(jobId, batchId) # returns an Array of BatchResult objects
     
