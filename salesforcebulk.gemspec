@@ -21,8 +21,9 @@ Gem::Specification.new do |s|
   s.add_dependency "activesupport"
   s.add_dependency "xml-simple"
 
-  s.add_development_dependency "mocha"
   s.add_development_dependency "rake"
+  s.add_development_dependency "rdoc"
+  s.add_development_dependency "mocha"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "webmock"
 
