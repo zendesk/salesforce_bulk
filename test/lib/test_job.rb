@@ -170,9 +170,7 @@ class TestJob < Test::Unit::TestCase
     response = fixture("job_abort_response.xml")
     job_id = "750E00000004N1NIAU"
     
-    stub_request(:post, "#{api_url(@client)}job/#{job_id}")
-      .with(:body => request, :headers => @headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:post, "#{api_url(@client)}job/#{job_id}").with(:body => request, :headers => @headers).to_return(:body => response, :status => 200)
     
     job = @client.abort_job(job_id)
     
