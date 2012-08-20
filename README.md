@@ -25,20 +25,24 @@ To contribute, fork this repo, create a topic branch, make changes, then send a 
 
 ### Basic Configuration
 
+When retrieving a password you will also be given a security token. Combine the two into a single value as the API treats this as your real password.
+
     require 'salesforce_bulk'
     
     client = SalesforceBulk::Client.new(username: 'MyUsername', password: 'MyPasswordWithSecurtyToken')
     client.authenticate
 
-Optional keys include `:login_host` (default: login.salesforce.com) and `:version` (default: 24.0)
+Optional keys include `login_host` (default is 'login.salesforce.com') and `version` (default is '24.0').
 
 ### Configuring from a YAML file
 
-The optional keys mentioned in the Basic Configuration section can also be used here.
+Create a YAML file with the content below. Only `username` and `password` is required.
 
     ---
     username: MyUsername
     password: MyPassword
+    login_host: login.salesforce.com # default
+    version: 24.0 # default
 
 Then in a Ruby script:
 
@@ -49,7 +53,7 @@ Then in a Ruby script:
 
 ## Usage Examples
 
-An important note about the data in any of the examples: each hash in a data set must have the same set of keys. If you need to have logic to not include certain values simply specify a nil value for a key.
+An important note about the data in any of the examples below: each hash in a data set must have the same set of keys. If you need to have logic to not include certain values simply specify a nil value for a key rather than not including the key-value pair.
 
 ### Basic Overall Example
 
