@@ -87,23 +87,27 @@ For any operation you should be able to specify a concurrency mode. The default 
 
 ### Retrieving Job Information (e.g. Status)
 
+The Job object has various properties such as status, created time, number of completed and failed batches and various other values.
+
     job = client.job_info(jobId) # returns a Job object
     
     puts "Job #{job.id} is closed." if job.closed? # other: open?, aborted?
+
+### Retrieving Info for a single Batch
+
+The Batch object has various properties such as status, created time, number of processed and failed records and various other values.
+
+    batch = client.batch_info(jobId, batchId) # returns a Batch object
+    
+    puts "Batch #{batch.id} is in progress." if batch.in_progress?
 
 ### Retrieving Info for all Batches
 
     batches = client.batch_info_list(jobId) # returns an Array of Batch objects
     
     batches.each do |batch|
-      puts "Batch #{batch.id} failed." if batch.failed? # other: completed?, failed?, in_progress?, queued?
+      puts "Batch #{batch.id} completed." if batch.completed? # other: failed?, in_progress?, queued?
     end
-
-### Retrieving Info for a single Batch
-
-    batch = client.batch_info(jobId, batchId) # returns a Batch object
-    
-    puts "Batch #{batch.id} is in progress." if batch.in_progress?
 
 ### Retrieving Batch Results (for Delete, Insert, Update and Upsert)
 
