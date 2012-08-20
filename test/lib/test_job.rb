@@ -82,9 +82,7 @@ class TestJob < Test::Unit::TestCase
     request = fixture("job_create_request.xml")
     response = fixture("job_create_response.xml")
     
-    stub_request(:post, "#{api_url(@client)}job")
-      .with(:body => request, :headers => @headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:post, "#{api_url(@client)}job").with(:body => request, :headers => @headers).to_return(:body => response, :status => 200)
     
     job = @client.add_job(:upsert, :VideoEvent__c, :external_id_field_name => :Id__c)
     
@@ -137,9 +135,7 @@ class TestJob < Test::Unit::TestCase
     response = fixture("job_close_response.xml")
     job_id = "750E00000004MzbIAE"
     
-    stub_request(:post, "#{api_url(@client)}job/#{job_id}")
-      .with(:body => request, :headers => @headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:post, "#{api_url(@client)}job/#{job_id}").with(:body => request, :headers => @headers).to_return(:body => response, :status => 200)
     
     job = @client.close_job(job_id)
     
@@ -210,9 +206,7 @@ class TestJob < Test::Unit::TestCase
     response = fixture("job_info_response.xml")
     job_id = "750E00000004N1mIAE"
     
-    stub_request(:get, "#{api_url(@client)}job/#{job_id}")
-      .with(:body => '', :headers => @headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:get, "#{api_url(@client)}job/#{job_id}").with(:body => '', :headers => @headers).to_return(:body => response, :status => 200)
     
     job = @client.job_info(job_id)
     

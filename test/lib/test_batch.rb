@@ -84,9 +84,7 @@ class TestBatch < Test::Unit::TestCase
       {:Id__c => '23456', :Title__c => "A second test!", :IsPreview__c => true}
     ]
     
-    stub_request(:post, "#{api_url(@client)}job/#{job_id}/batch")
-      .with(:body => request, :headers => @headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:post, "#{api_url(@client)}job/#{job_id}/batch").with(:body => request, :headers => @headers).to_return(:body => response, :status => 200)
     
     batch = @client.add_batch(job_id, data)
     
@@ -156,9 +154,7 @@ class TestBatch < Test::Unit::TestCase
     job_id = "750E00000004N97IAE"
     batch_id = "751E00000004ZRbIAM"
     
-    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}")
-      .with(:headers => @headersWithXml)
-      .to_return(:body => response, :status => 200)
+    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}").with(:headers => @headersWithXml).to_return(:body => response, :status => 200)
     
     batch = @client.batch_info(job_id, batch_id)
     
@@ -208,9 +204,7 @@ class TestBatch < Test::Unit::TestCase
     batch_id = "751E00000004aEY"
     result_id = "752E0000000TNaq"
     
-    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}/result")
-      .with(:headers => @headersWithXml)
-      .to_return(:body => response, :status => 200)
+    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}/result").with(:headers => @headersWithXml).to_return(:body => response, :status => 200)
     
     @client.expects(:query_result).with(job_id, batch_id, result_id).returns([])
     
@@ -229,9 +223,7 @@ class TestBatch < Test::Unit::TestCase
     batch_id = "751E00000004aEY"
     result_id = "752E0000000TNaq"
     
-    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}/result/#{result_id}")
-      .with(:headers => @headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}/result/#{result_id}").with(:headers => @headers).to_return(:body => response, :status => 200)
     
     result = @client.query_result(job_id, batch_id, result_id)
     
@@ -245,9 +237,7 @@ class TestBatch < Test::Unit::TestCase
     job_id = "750E00000004NnR"
     batch_id = "751E00000004aEY"
     
-    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}/result")
-      .with(:headers => @headersWithXml)
-      .to_return(:body => response, :status => 400)
+    stub_request(:get, "#{api_url(@client)}job/#{job_id}/batch/#{batch_id}/result").with(:headers => @headersWithXml).to_return(:body => response, :status => 400)
     
     assert_raise SalesforceBulk::SalesforceError do
       @client.batch_result(job_id, batch_id)

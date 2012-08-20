@@ -50,9 +50,7 @@ class TestInitialization < Test::Unit::TestCase
     request = fixture("login_request.xml")
     response = fixture("login_response.xml")
     
-    stub_request(:post, "https://#{@client.login_host}/services/Soap/u/24.0")
-      .with(:body => request, :headers => headers)
-      .to_return(:body => response, :status => 200)
+    stub_request(:post, "https://#{@client.login_host}/services/Soap/u/24.0").with(:body => request, :headers => headers).to_return(:body => response, :status => 200)
     
     result = @client.authenticate()
     
