@@ -81,7 +81,7 @@ When using the :upsert operation you must specify an external ID field name:
 
     job = client.add_job(:upsert, :MyObject__c, :external_id_field_name => :MyId__c)
 
-For any operation you should be able to specify a concurrency mode. The default is Parallel. The other choice is Serial.
+For any operation you should be able to specify a concurrency mode. The default is `Parallel`. The only other choice is `Serial`.
 
     job = client.add_job(:upsert, :MyObject__c, :concurrency_mode => :Serial, :external_id_field_name => :MyId__c)
 
