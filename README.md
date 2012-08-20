@@ -125,7 +125,7 @@ The object returned from the following example only applies to the operations: `
 
 To verify that a batch completed successfully or failed call the `batch_info` or `batch_info_list` methods first, otherwise if you call `batch_result` without verifying and the batch failed the method will raise an error.
 
-Query results are handled differently as the response will not contain the full result set. You'll have to page through sets if you added multiple batches to a job.
+Query results are handled differently as its possible that a single batch could return multiple results if objects returned are large enough. Note: I haven't been able to replicate this behavior but in a fork by @WWJacob has [discovered that multiple results can be returned](https://github.com/WWJacob/salesforce_bulk/commit/8f9e68c390230e885823e45cd2616ac3159697ef).
 
     # returns a QueryResultCollection object (an Array)
     results = client.batch_result(jobId, batchId)
@@ -144,9 +144,6 @@ Query results are handled differently as the response will not contain the full 
     end
 
 Note: By reviewing the API docs and response format my understanding was that the API would return multiple results sets for a single batch if the query was to large but this does not seem to be the case in my live testing. It seems to be capped at 10000 records (as it when inserting data) but I haven't been able to verify through the documentation. If you know anything about that your input is appreciated. In the meantime the gem was built to support multiple result sets for a query batch but seems that will change which will simplify that method.
-
-Fellow GitHubber @WWJacob has found a case where a single query batch can contain multiple result sets.
-https://github.com/WWJacob/salesforce_bulk/commit/8f9e68c390230e885823e45cd2616ac3159697ef
 
 ## Copyright
 
