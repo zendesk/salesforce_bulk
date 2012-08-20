@@ -19,10 +19,6 @@ class TestBatchResult < Test::Unit::TestCase
     assert_equal @result_created.updated?, false
   end
   
-  test "initialization from CSV row" do
-    #@br = SalesforceBulk::BatchResult.new_from_csv()
-  end
-  
   test "error?" do
     assert @result_failed.error?
     
