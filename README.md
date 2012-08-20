@@ -150,6 +150,19 @@ Note: By reviewing the API docs and response format my understanding was that th
 - Support for Ruby 1.8.7 and/or other platforms
 - Rdocs
 
+## Version History
+
+**1.1.0** (August 20, 2012)
+
+* Added travis setup. Support for Ruby 1.9.2 and 1.9.3 specified.
+* Removed `token` property on Client object. Specify token in `password` field.
+* Accepted pull request for 1.9.3 improvements.
+* Description updates in README.
+
+**1.0.0** (August 17, 2012)
+
+* Initial public release.
+
 ## Copyright
 
 Copyright (c) 2012 Javier Julio.
