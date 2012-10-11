@@ -147,10 +147,15 @@ Note: By reviewing the API docs and response format my understanding was that th
 
 ## Contribution Suggestions/Ideas
 
-- Support for Ruby 1.8.7 and/or other platforms
+- Support for other Ruby platforms
+- Clean up/reorganize tests better
 - Rdocs
 
 ## Version History
+
+**1.2.0** (October 10, 2012)
+
+* Added Ruby 1.8.7 support (thanks to @dlee)
 
 **1.1.0** (August 20, 2012)
 
