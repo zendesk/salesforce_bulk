@@ -153,9 +153,14 @@ Note: By reviewing the API docs and response format my understanding was that th
 
 ## Version History
 
+**1.3.0** (April 28, 2014)
+
+* Added support for multiple subdomains (#10 - thanks [@lucianapazos](https://github.com/lucianapazos))
+* Added dependency version requirements to gemspec
+
 **1.2.0** (October 10, 2012)
 
-* Added Ruby 1.8.7 support (thanks to @dlee)
+* Added Ruby 1.8.7 support (thanks [@dlee](https://github.com/dlee))
 
 **1.1.0** (August 20, 2012)
 
