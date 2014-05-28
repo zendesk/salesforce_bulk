@@ -3,6 +3,7 @@
  <id>751E00000004ZRbIAM</id>
  <jobId>750E00000004N97IAE</jobId>
  <state>Completed</state>
+ <stateMessage>Success</stateMessage>
  <createdDate>2012-05-31T01:22:47.000Z</createdDate>
  <systemModstamp>2012-05-31T01:22:47.000Z</systemModstamp>
  <numberRecordsProcessed>2</numberRecordsProcessed>
