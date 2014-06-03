@@ -153,6 +153,10 @@ Note: By reviewing the API docs and response format my understanding was that th
 
 ## Version History
 
+**1.4.0** (June 1, 2014)
+
+* Added state_message to Batch class (#11 - thanks [@bethesque](https://github.com/bethesque))
+
 **1.3.0** (April 28, 2014)
 
 * Added support for multiple subdomains (#10 - thanks [@lucianapazos](https://github.com/lucianapazos))
