@@ -2,7 +2,7 @@
 
 ## Overview
 
-SalesforceBulk is an easy to use Ruby gem for connecting to and using the [Salesforce Bulk API](http://www.salesforce.com/us/developer/docs/api_asynch/index.htm). This is a rewrite and separate release of Jorge Valdivia's salesforce_bulk gem (renamed `salesforcebulk`) with full unit tests and full API capability (e.g. adding multiple batches per job). This gem was built on Ruby 1.8.7, 1.9.2, and 1.9.3.
+SalesforceBulk is an easy to use Ruby gem for connecting to and using the [Salesforce Bulk API](http://www.salesforce.com/us/developer/docs/api_asynch/index.htm). This is a rewrite and separate release of Jorge Valdivia's salesforce_bulk gem (renamed `salesforcebulk`) with full unit tests and full API capability (e.g. adding multiple batches per job). This gem was built on Ruby 2.0.0, 2.1.6, and 2.2.2.
 
 ## Installation
 
@@ -21,6 +21,14 @@ To contribute, fork this repo, create a topic branch, make changes, then send a 
     bundle install
     rake
 
+To run the test suite on all gemfiles with your current ruby version, use:
+
+    bundle exec rake wwtd:local
+
+To run the full test suite with different gemfiles and ruby versions, use:
+
+    bundle exec rake wwtd
+
 ## Configuration and Initialization
 
 ### Basic Configuration
@@ -28,7 +36,7 @@ To contribute, fork this repo, create a topic branch, make changes, then send a 
 When retrieving a password you will also be given a security token. Combine the two into a single value as the API treats this as your real password.
 
     require 'salesforce_bulk'
-    
+
     client = SalesforceBulk::Client.new(username: 'MyUsername', password: 'MyPasswordWithSecurtyToken')
     client.authenticate
 
@@ -47,7 +55,7 @@ Create a YAML file with the content below. Only `username` and `password` is req
 Then in a Ruby script:
 
     require 'salesforce_bulk'
-    
+
     client = SalesforceBulk::Client.new("config/salesforce_bulk.yml")
     client.authenticate
 
@@ -59,13 +67,13 @@ An important note about the data in any of the examples below: each hash in a da
 
     data1 = [{:Name__c => 'Test 1'}, {:Name__c => 'Test 2'}]
     data2 = [{:Name__c => 'Test 3'}, {:Name__c => 'Test 4'}]
-    
+
     job = client.add_job(:insert, :MyObject__c)
-    
+
     # easily add multiple batches to a job
     batch = client.add_batch(job.id, data1)
     batch = client.add_batch(job.id, data2)
-    
+
     job = client.close_job(job.id) # or use the abort_job(id) method
 
 ### Adding a Job
@@ -90,7 +98,7 @@ For any operation you should be able to specify a concurrency mode. The default 
 The Job object has various properties such as status, created time, number of completed and failed batches and various other values.
 
     job = client.job_info(jobId) # returns a Job object
-    
+
     puts "Job #{job.id} is closed." if job.closed? # other: open?, aborted?
 
 ### Retrieving Info for a single Batch
@@ -98,13 +106,13 @@ The Job object has various properties such as status, created time, number of co
 The Batch object has various properties such as status, created time, number of processed and failed records and various other values.
 
     batch = client.batch_info(jobId, batchId) # returns a Batch object
-    
+
     puts "Batch #{batch.id} is in progress." if batch.in_progress?
 
 ### Retrieving Info for all Batches
 
     batches = client.batch_info_list(jobId) # returns an Array of Batch objects
-    
+
     batches.each do |batch|
       puts "Batch #{batch.id} completed." if batch.completed? # other: failed?, in_progress?, queued?
     end
@@ -116,7 +124,7 @@ To verify that a batch completed successfully or failed call the `batch_info` or
 The object returned from the following example only applies to the operations: `delete`, `insert`, `update` and `upsert`. Query results are handled differently.
 
     results = client.batch_result(jobId, batchId) # returns an Array of BatchResult objects
-    
+
     results.each do |result|
       puts "Item #{result.id} had an error of: #{result.error}" if result.error?
     end
@@ -129,18 +137,18 @@ Query results are handled differently as its possible that a single batch could 
 
     # returns a QueryResultCollection object (an Array)
     results = client.batch_result(jobId, batchId)
-    
+
     while results.any?
-      
+
       # Assuming query was: SELECT Id, Name, CustomField__c FROM Account
       results.each do |result|
         puts result[:Id], result[:Name], result[:CustomField__c]
       end
-      
+
       puts "Another set is available." if results.next?
-      
+
       results.next
-      
+
     end
 
 Note: By reviewing the API docs and response format my understanding was that the API would return multiple results sets for a single batch if the query was to large but this does not seem to be the case in my live testing. It seems to be capped at 10000 records (as it when inserting data) but I haven't been able to verify through the documentation. If you know anything about that your input is appreciated. In the meantime the gem was built to support multiple result sets for a query batch but seems that will change which will simplify that method.
@@ -152,6 +160,14 @@ Note: By reviewing the API docs and response format my understanding was that th
 - Rdocs
 
 ## Version History
+
+**2.0.0** (April 25, 2015)
+  Drop support for Ruby 1.8 and Ruby 1.9
+  Added support for Ruby 2.0, 2.1 and 2.2
+  Added support for Rails 4.0, 4.1 an 4.2
+  Changed test_helper to avoid requiring test_unit (removed in Ruby 2.2)
+  Replaced Test::Unit::TestCase with ActiveSupport::TestCase
+  Bumped shoulda and losen dependencies on minitest
 
 **1.4.0** (June 1, 2014)
 
