@@ -27,4 +27,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda", '~> 3.3.0'
   s.add_development_dependency "webmock", '~> 1.8.11'
   s.add_development_dependency 'minitest', '~> 4.3'
+  s.add_development_dependency 'bump'
+  s.add_development_dependency 'wwtd'
 end
