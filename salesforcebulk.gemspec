@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.files         = `git ls-files lib README.md`.split("\n")
 
-  s.add_dependency "activesupport", '~> 3.2.0'
+  s.add_dependency "activesupport", '>= 3.2.0', '< 4.1'
   s.add_dependency "xml-simple"
 
   s.add_development_dependency "rake"
@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda", '~> 3.3.0'
   s.add_development_dependency "webmock", '~> 1.8.11'
   s.add_development_dependency 'minitest', '~> 4.3'
+  s.add_development_dependency 'bump'
+  s.add_development_dependency 'wwtd'
 end

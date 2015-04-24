@@ -1,0 +1,54 @@
+PATH
+  remote: ../
+  specs:
+    salesforcebulk (1.4.0)
+      activesupport (>= 3.2.0, < 4.1)
+      xml-simple
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.2.21)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    addressable (2.3.8)
+    bump (0.5.2)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    i18n (0.7.0)
+    json (1.8.2)
+    metaclass (0.0.4)
+    minitest (4.7.5)
+    mocha (0.13.3)
+      metaclass (~> 0.0.1)
+    multi_json (1.11.0)
+    rake (10.4.2)
+    rdoc (4.2.0)
+      json (~> 1.4)
+    safe_yaml (1.0.4)
+    shoulda (3.3.2)
+      shoulda-context (~> 1.0.1)
+      shoulda-matchers (~> 1.4.1)
+    shoulda-context (1.0.2)
+    shoulda-matchers (1.4.1)
+      activesupport (>= 3.0.0)
+    webmock (1.8.11)
+      addressable (>= 2.2.7)
+      crack (>= 0.1.7)
+    wwtd (0.9.1)
+    xml-simple (1.1.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport (~> 3.2)
+  bump
+  minitest (~> 4.3)
+  mocha (~> 0.13.0)
+  rake
+  rdoc
+  salesforcebulk!
+  shoulda (~> 3.3.0)
+  webmock (~> 1.8.11)
+  wwtd
