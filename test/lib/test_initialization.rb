@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestInitialization < Test::Unit::TestCase
+class TestInitialization < ActiveSupport::TestCase
   
   def setup
     @options = {

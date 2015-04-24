@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 gemspec :path => '../'
 
-gem 'activesupport', '~> 3.2'
+gem 'activesupport', '~> 4.0.13'
 gem 'minitest', '~> 4.3'

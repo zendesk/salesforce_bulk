@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestCoreExtensions < Test::Unit::TestCase
+class TestCoreExtensions < ActiveSupport::TestCase
   
   test "to_b" do
     assert_equal "true".to_b, true

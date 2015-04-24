@@ -5,8 +5,16 @@ sudo: false
 rvm:
   - 2.0.0
   - 2.1.6
+  - 2.2.2
 gemfile:
   - gemfiles/rails3.2.gemfile
+  - gemfiles/rails4.0.gemfile
+  - gemfiles/rails4.1.gemfile
+  - gemfiles/rails4.2.gemfile
+matrix:
+  exclude:
+    - gemfile: gemfiles/rails3.2.gemfile
+      rvm: 2.2.2
 notifications:
   email:
     on_success: always

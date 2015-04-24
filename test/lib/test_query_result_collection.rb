@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestQueryResultCollection < Test::Unit::TestCase
+class TestQueryResultCollection < ActiveSupport::TestCase
   
   def setup
     options = {
