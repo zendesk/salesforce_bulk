@@ -1,10 +1,6 @@
 require 'net/https'
 require 'xmlsimple'
-if RUBY_VERSION < '1.9'
-	require 'fastercsv'
-else
-	require 'csv'
-end
+require 'csv'
 require 'active_support'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/hash/keys'
