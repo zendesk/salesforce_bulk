@@ -6,6 +6,7 @@ rvm:
   - 1.9.2
 gemfile:
   - gemfiles/rails3.2.gemfile
+  - gemfiles/rails4.0.gemfile
 notifications:
   email:
     on_success: always
