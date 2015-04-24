@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestBatch < Test::Unit::TestCase
+class TestBatch < ActiveSupport::TestCase
 
   def setup
     options = {

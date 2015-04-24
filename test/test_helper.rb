@@ -1,10 +1,10 @@
 require 'minitest/autorun'
 require 'shoulda'
 require 'mocha/setup'
-require 'webmock/test_unit'
+require 'webmock/minitest'
 require 'salesforce_bulk'
 
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
 
   def self.test(name, &block)
     define_method("test #{name.inspect}", &block)

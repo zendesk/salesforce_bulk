@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestBatchResult < Test::Unit::TestCase
+class TestBatchResult < ActiveSupport::TestCase
   
   def setup
     @result_created = SalesforceBulk::BatchResult.new('123', true, true, '')
