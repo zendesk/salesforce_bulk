@@ -85,10 +85,6 @@ class TestBatch < Test::Unit::TestCase
       {:Id__c => '23456', :Title__c => "A second test!", :IsPreview__c => true}
     ]
 
-    if RUBY_VERSION < '1.9'
-      data.first.stubs(:keys).returns([:Id__c, :Title__c, :IsPreview__c])
-    end
-
     stub_request(:post, "#{api_url(@client)}job/#{job_id}/batch").with(:body => request, :headers => @headers).to_return(:body => response, :status => 200)
 
     batch = @client.add_batch(job_id, data)
